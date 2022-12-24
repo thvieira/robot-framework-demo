@@ -1,0 +1,19 @@
+1666068061262	geckodriver	INFO	Listening on 127.0.0.1:61177
+1666068061762	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "61178" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/9q/n8q8vq2j7_526sh8ys4ptgj80000gn/T/rust_mozprofileiwX9YM"
+1666068062786	Marionette	INFO	Marionette enabled
+1666068062841	Marionette	INFO	Listening on port 61185
+2022-10-18 01:41:02.914 plugin-container[58450:3556365] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-18 01:41:02.914 plugin-container[58450:3556365] nil host used in call to allowsAnyHTTPSCertificateForHost:
+Read port: 61185
+2022-10-18 01:41:02.963 plugin-container[58450:3556365] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-18 01:41:02.963 plugin-container[58450:3556365] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-18 01:41:02.963 plugin-container[58450:3556363] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-18 01:41:02.963 plugin-container[58450:3556363] nil host used in call to allowsAnyHTTPSCertificateForHost:
+WebDriver BiDi listening on ws://127.0.0.1:61178
+1666068063058	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/9q/n8q8vq2j7_526sh8ys4ptgj80000gn/T/rust_mozprofileiwX9YM/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:61178/devtools/browser/aad2401b-a23e-40d7-a439-88e6c59aea04
+console.warn: LoginRecipes: "Falling back to a synchronous message for: http://127.0.0.1:5173."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: http://127.0.0.1:5173."
+1666068065725	Marionette	INFO	Stopped listening on port 61185

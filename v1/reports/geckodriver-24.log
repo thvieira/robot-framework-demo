@@ -1,0 +1,17 @@
+1666012796386	geckodriver	INFO	Listening on 127.0.0.1:58985
+1666012796905	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "58986" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/9q/n8q8vq2j7_526sh8ys4ptgj80000gn/T/rust_mozprofileGgUruJ"
+2022-10-17 10:19:57.439 plugin-container[43024:3393756] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-17 10:19:57.462 plugin-container[43024:3393756] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-17 10:19:57.466 plugin-container[43024:3393756] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-17 10:19:57.466 plugin-container[43024:3393756] nil host used in call to allowsAnyHTTPSCertificateForHost:
+2022-10-17 10:19:57.466 plugin-container[43024:3393752] nil host used in call to allowsSpecificHTTPSCertificateForHost
+2022-10-17 10:19:57.466 plugin-container[43024:3393752] nil host used in call to allowsAnyHTTPSCertificateForHost:
+1666012797514	Marionette	INFO	Marionette enabled
+1666012797581	Marionette	INFO	Listening on port 58993
+Read port: 58993
+WebDriver BiDi listening on ws://127.0.0.1:58986
+1666012797771	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/9q/n8q8vq2j7_526sh8ys4ptgj80000gn/T/rust_mozprofileGgUruJ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58986/devtools/browser/dd169811-6868-4e64-8955-b5341ca9592b
+1666012799788	Marionette	INFO	Stopped listening on port 58993
