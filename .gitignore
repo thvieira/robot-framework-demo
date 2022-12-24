@@ -1,0 +1,32 @@
+# Created by https://www.toptal.com/developers/gitignore/api/robotframework,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=robotframework,visualstudiocode
+
+### robotframework ###
+log.html
+output.xml
+report.html
+selenium-screenshot-*.png
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+**.DS_Store
+reports/**
+
+# End of https://www.toptal.com/developers/gitignore/api/robotframework,visualstudiocode
