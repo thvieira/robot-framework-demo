@@ -5,8 +5,8 @@ Documentation   Como cliente da loja virtual, desejo criar um
 Library         SeleniumLibrary
 Resource        ../resources/config.resource
 Resource        ../resources/page_objects/menu_page.resource
-Resource        ../resources/page_objects/minha_conta_page.resource
-Resource        ../resources/page_objects/cadastro_page.resource
+Resource        ../resources/page_objects/account_page.resource
+Resource        ../resources/page_objects/register_page.resource
 
 Test Setup      Open Browser   ${URL}  ${BROWSER}  
 Test Teardown   Close Browser  
