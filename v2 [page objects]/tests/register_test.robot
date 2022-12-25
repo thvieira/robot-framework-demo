@@ -12,7 +12,7 @@ Test Setup      Open Browser   ${URL}  ${BROWSER}
 Test Teardown   Close Browser  
 
 *** Test Cases ***
-Cenário: Cadastro com sucesso de Pessoa Física
+Scenario: Success sign in as Natural Person
     Given Click Link     ${MY_ACCOUNT_BUTTON}
     When Input Text      ${NAME_TEXT_FIELD}                  Lorem ipsum
      And Input Text      ${MAIL_TEXT_FIELD}                  lorem@ipsum.com
@@ -23,7 +23,7 @@ Cenário: Cadastro com sucesso de Pessoa Física
     Then Wait Until Page Contains   Lorem ipsum, teu cadastro foi realizado com sucesso!
      And Page Should Contain Link   ${WISH_LIST_LINK}
     
-Cenário: Cadastro com sucesso de Pessoa Jurídica
+Scenario: Success sign in as Juridicial Person
     Given Click Link     ${MY_ACCOUNT_BUTTON} 
     When Input Text      ${NAME_TEXT_FIELD}                  Lorem ipsum
      And Input Text      ${MAIL_TEXT_FIELD}                  lorem@ipsum.com
