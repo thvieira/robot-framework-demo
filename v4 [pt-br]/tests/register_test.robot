@@ -7,8 +7,8 @@ Documentação    Como cliente da loja virtual, desejo criar um
 Biblioteca      SeleniumLibrary
 Recurso        ../resources/config.resource
 Recurso        ../resources/page_objects/menu_page.resource
-Recurso        ../resources/page_objects/minha_conta_page.resource
-Recurso        ../resources/page_objects/cadastro_page.resource
+Recurso        ../resources/page_objects/account_page.resource
+Recurso        ../resources/page_objects/register_page.resource
 
 Inicialização de Teste      Open Browser   ${URL}  ${BROWSER}  
 Finalização de Teste        Close Browser  
@@ -24,15 +24,15 @@ Cenário: Cadastro com sucesso de Pessoa Física
        E devo visualizar a opção de acessar minha lista de desejos
     
 Cenário: Cadastro com sucesso de Pessoa Jurídica
-    Given Click Link     ${MY_ACCOUNT_BUTTON}
-    When Input Text      ${NAME_TEXT_FIELD}                  Lorem ipsum LTDA
-     And Input Text      ${MAIL_TEXT_FIELD}                  contact@ipsum.com
-     And Input Password  ${REGISTER_PASS_TEXT_FIELD}         12345
-     And Input Password  ${REGISTER_PASS_TEXT_FIELD}         12345
-     And Select From List By Label  ${USER_TYPE_TEXT_FIELD}  Pessoa Jurídica
-     And Submit Form                ${REGISTER_BUTTON}
-    Then Wait Until Page Contains   Lorem ipsum LTDA, teu cadastro foi realizado com sucesso!
-     And Page Should Contain Link   ${WISH_LIST_LINK}
+  Given Click Link     ${MY_ACCOUNT_BUTTON}
+   When Input Text      ${NAME_TEXT_FIELD}           Lorem ipsum LTDA
+    And Input Text      ${MAIL_TEXT_FIELD}           contact@ipsum.com
+    And Input Password  ${REGISTER_PASS_TEXT_FIELD}  12345
+    And Input Password  ${REGISTER_PASS_TEXT_FIELD}  12345
+    And Select From List By Label  ${BUSINESS_ENTITY_COMBOBOX}  Pessoa Jurídica
+    And Submit Form                ${REGISTER_BUTTON}
+   Then Wait Until Page Contains   Lorem ipsum LTDA, teu cadastro foi realizado com sucesso!
+    And Page Should Contain Link   ${WISH_LIST_LINK}
     
 *** Palavras-Chave ***
 que estou na página da loja virtual
@@ -42,11 +42,11 @@ acessei a área de cadastro
   Click Link     ${MY_ACCOUNT_BUTTON}
 
 preencho o formulário com meus dados
-  Input Text      ${NAME_TEXT_FIELD}                  Lorem ipsum
-  Input Text      ${MAIL_TEXT_FIELD}                  lorem@ipsum.com
-  Input Password  ${PASS_TEXT_FIELD}                  12345
-  Input Password  ${REGISTER_PASS_TEXT_FIELD}         12345
-  Select From List By Label  ${USER_TYPE_TEXT_FIELD}  Pessoa Física
+  Input Text      ${NAME_TEXT_FIELD}           Lorem ipsum
+  Input Text      ${MAIL_TEXT_FIELD}           lorem@ipsum.com
+  Input Password  ${PASS_TEXT_FIELD}           12345
+  Input Password  ${REGISTER_PASS_TEXT_FIELD}  12345
+  Select From List By Label  ${BUSINESS_ENTITY_COMBOBOX}  Pessoa Física
 
 submeto os dados do formulário
   Submit Form     ${REGISTER_BUTTON}
