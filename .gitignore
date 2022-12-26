@@ -27,6 +27,6 @@ selenium-screenshot-*.png
 .ionide
 
 **.DS_Store
-reports/**
+**/reports/**
 
 # End of https://www.toptal.com/developers/gitignore/api/robotframework,visualstudiocode

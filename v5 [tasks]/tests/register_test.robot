@@ -6,9 +6,9 @@ Documentação    Como cliente da loja virtual, desejo criar um
           ...   pedidos e lista de desejos.
 Biblioteca      SeleniumLibrary
 Recurso        ../resources/config.resource
-Recurso        ../resources/page_objects/menu_page.resource
-Recurso        ../resources/page_objects/account_page.resource
-Recurso        ../resources/page_objects/register_page.resource
+Recurso        ../resources/tasks/my_account.resource
+Recurso        ../resources/tasks/menu.resource
+Recurso        ../resources/tasks/register.resource
 
 Inicialização de Teste      Open Browser   ${URL}  ${BROWSER}  
 Finalização de Teste        Close Browser  
@@ -36,26 +36,5 @@ Cenário: Cadastro com sucesso de Pessoa Jurídica
     
 *** Palavras-Chave ***
 que estou na página da loja virtual
+  Sleep  5
   Title Should Be  Bookstore Demo
-
-acessei a área de cadastro
-  Click Link     ${MY_ACCOUNT_BUTTON}
-
-preencho o formulário com meus dados
-  Input Text      ${NAME_TEXT_FIELD}           Lorem ipsum
-  Input Text      ${MAIL_TEXT_FIELD}           lorem@ipsum.com
-  Input Password  ${PASS_TEXT_FIELD}           12345
-  Input Password  ${REGISTER_PASS_TEXT_FIELD}  12345
-  Select From List By Label  ${BUSINESS_ENTITY_COMBOBOX}  Pessoa Física
-
-submeto os dados do formulário
-  Submit Form     ${REGISTER_BUTTON}
-
-devo receber uma mensagem de sucesso
-  Wait Until Page Contains   Lorem ipsum, teu cadastro foi realizado com sucesso!
-
-devo visualizar a opção de acessar meus pedidos
-  Page Should Contain Link   ${MY_ORDERS_LINK}
-
-devo visualizar a opção de acessar minha lista de desejos
-  Page Should Contain Link   ${WISH_LIST_LINK}
