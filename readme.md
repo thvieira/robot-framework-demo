@@ -6,8 +6,6 @@ v1 – Hello world
 
 v2 – Page objects
 
-v3 – Keywords
+v3 – Tasks
 
-v4 – PT-br language
-
-v5 – Tasks
+v3.1 – PT-br language
