@@ -6,9 +6,9 @@ Documentação    Como cliente da loja virtual, desejo criar um
           ...   pedidos e lista de desejos.
 Biblioteca      SeleniumLibrary
 Recurso        ../resources/config.resource
-Recurso        ../resources/tasks/my_account.resource
-Recurso        ../resources/tasks/menu.resource
-Recurso        ../resources/tasks/register.resource
+Recurso        ../resources/pages/my_account.resource
+Recurso        ../resources/pages/menu.resource
+Recurso        ../resources/pages/register.resource
 
 Inicialização de Teste      Open Browser   ${URL}  ${BROWSER}  
 Finalização de Teste        Close Browser  

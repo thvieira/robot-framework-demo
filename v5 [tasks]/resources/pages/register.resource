@@ -1,5 +1,5 @@
 *** Settings ***
-Resource  ../page_objects/register_page.resource
+Resource  ../page_objects/register_page_object.resource
 
 *** Keywords ***
 preencho o formulário com meus dados

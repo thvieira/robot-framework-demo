@@ -1,5 +1,5 @@
 *** Settings ***
-Resource  ../page_objects/account_page.resource
+Resource  ../page_objects/account_page_object.resource
 
 *** Keywords ***
 devo visualizar a opção de acessar meus pedidos
