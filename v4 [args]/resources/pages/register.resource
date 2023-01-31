@@ -3,6 +3,9 @@ Documentation  Register Page Actions
 Resource       ../page_objects/register_page_object.resource
 
 *** Keywords ***
+##############################
+##   Posicional arguments   ##
+##############################
 I fill register form 
   [Arguments]     ${name}  ${mail}  ${pass}
           ...     ${confirm_pass}   ${business_entity}
@@ -19,8 +22,9 @@ I should see a success message
   [Arguments]  ${message}
   Wait Until Page Contains   ${message}
 
-
-
+###########################
+##   Embeded arguments   ##
+###########################
 I fill "${name}" in name text field
   Input Text      ${NAME_TEXT_FIELD}           ${name}
 
