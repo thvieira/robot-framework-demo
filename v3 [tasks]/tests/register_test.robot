@@ -6,7 +6,7 @@ Library         SeleniumLibrary
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource
-Resource        ../resources/pages/my_account.resource
+Resource        ../resources/pages/account.resource
 Resource        ../resources/pages/register.resource
 
 Test Setup      Open Browser   ${URL}  ${BROWSER}  
