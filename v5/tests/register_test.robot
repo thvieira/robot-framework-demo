@@ -3,6 +3,7 @@ Documentation   Como cliente da loja virtual, desejo criar um
           ...   cadastro no sistema para poder visualizar meus 
           ...   pedidos e lista de desejos.
 Library         SeleniumLibrary
+Library         FakerLibrary
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource
@@ -14,10 +15,12 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
+  ${fake_email} =  FakerLibrary.Email
+
     Given I am on Bookstore Demo web site
       And I go to log in or sign in page
      When I fill "Lorem ipsum" in name text field
-      And I fill "lorem@ipsum.com" in e-mail text field
+      And I fill "${fake_email}" in e-mail text field
       And I fill "12345" in pass text field
       And I fill "12345" in confirm pass text field
       And I select "Pessoa Física" in business entity combo box
@@ -27,10 +30,12 @@ Scenario: Success sign in as Natural Person
       And I should see My Orders
     
 Scenario: Success sign in as Juridicial Person
+  ${fake_email} =  FakerLibrary.Email
+
     Given I am on Bookstore Demo web site
       And I go to log in or sign in page
      When I fill "Lorem ipsum LTDA" in name text field
-      And I fill "contact@loremipsum.com" in e-mail text field
+      And I fill "${fake_email}" in e-mail text field
       And I fill "12345" in pass text field
       And I fill "12345" in confirm pass text field
       And I select "Pessoa Jurídica" in business entity combo box
