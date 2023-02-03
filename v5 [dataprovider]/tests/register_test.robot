@@ -12,6 +12,7 @@ Resource        ../resources/pages/register.resource
 
 Test Setup      Open Browser   ${URL}  ${BROWSER}  
 Test Teardown   Close Browser  
+Test Template   Success sign in
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
@@ -20,8 +21,8 @@ Scenario: Success sign in as Natural Person
       And I go to log in or sign in page
      When I fill "Lorem ipsum" in name text field
       And I fill "${fake_email}" in e-mail text field
-      And I fill "12345" in pass text field
-      And I fill "12345" in confirm pass text field
+      And I fill "foo123" in pass text field
+      And I fill "foo123" in confirm pass text field
       And I select "Pessoa Física" in business entity combo box
       And I submit register form 
      Then I should see the "Lorem ipsum, teu cadastro foi realizado com sucesso!" message
@@ -34,8 +35,8 @@ Scenario: Success sign in as Juridicial Person
       And I go to log in or sign in page
      When I fill "Lorem ipsum LTDA" in name text field
       And I fill "${fake_email}" in e-mail text field
-      And I fill "12345" in pass text field
-      And I fill "12345" in confirm pass text field
+      And I fill "foo123" in pass text field
+      And I fill "foo123" in confirm pass text field
       And I select "Pessoa Jurídica" in business entity combo box
       And I submit register form 
      Then I should see the "Lorem ipsum LTDA, teu cadastro foi realizado com sucesso!" message
