@@ -2,6 +2,7 @@
 Documentation   Como cliente da loja virtual, desejo criar um 
           ...   cadastro no sistema para poder visualizar meus 
           ...   pedidos e lista de desejos.
+Test Tags    register   embeded_args
 Library         SeleniumLibrary
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
@@ -14,6 +15,8 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
+    [Tags]  natural_person
+
     Given I am on Bookstore Demo web site
       And I go to log in or sign in page
      When I fill "Lorem ipsum" in name text field
@@ -28,6 +31,8 @@ Scenario: Success sign in as Natural Person
       And I should see My Orders
     
 Scenario: Success sign in as Juridicial Person
+    [Tags]  juridicial_person
+    
     Given I am on Bookstore Demo web site
       And I go to log in or sign in page
      When I fill "Lorem ipsum LTDA" in name text field
@@ -40,4 +45,3 @@ Scenario: Success sign in as Juridicial Person
      Then I should see the "Lorem ipsum LTDA, teu cadastro foi realizado com sucesso!" message
       And I should see My Invoices
       And I should see My Orders
-
