@@ -11,8 +11,7 @@ Resource        ../resources/pages/account.resource
 Resource        ../resources/pages/register.resource
 
 Test Setup      Open Browser   ${URL}  ${BROWSER}  
-Test Teardown   Close Browser  
-Test Template   Success sign in
+Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
@@ -40,6 +39,6 @@ Scenario: Success sign in as Juridicial Person
       And I select "Pessoa Jurídica" in business entity combo box
       And I submit register form 
      Then I should see the "Lorem ipsum LTDA, teu cadastro foi realizado com sucesso!" message
-      And I should see My Wish List
+      And I should see My Invoices
       And I should see My Orders
 

@@ -3,8 +3,8 @@ Documentation   Como cliente da loja virtual, desejo criar um
           ...   cadastro no sistema para poder visualizar meus 
           ...   pedidos e lista de desejos.
 Library         SeleniumLibrary
-Library         FakerLibrary
 Resource        ../resources/config.resource
+Resource        ../resources/dataprovider.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource
 Resource        ../resources/pages/account.resource
@@ -15,9 +15,8 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
-  ${fake_email} =  FakerLibrary.Email
-
-    Given I am on Bookstore Demo web site
+    Given I generated a fake e-mail
+      And I am on Bookstore Demo web site
       And I go to log in or sign in page
      When I fill "Lorem ipsum" in name text field
       And I fill "${fake_email}" in e-mail text field
@@ -30,9 +29,8 @@ Scenario: Success sign in as Natural Person
       And I should see My Orders
     
 Scenario: Success sign in as Juridicial Person
-  ${fake_email} =  FakerLibrary.Email
-
-    Given I am on Bookstore Demo web site
+    Given I generated a fake e-mail
+      And I am on Bookstore Demo web site
       And I go to log in or sign in page
      When I fill "Lorem ipsum LTDA" in name text field
       And I fill "${fake_email}" in e-mail text field

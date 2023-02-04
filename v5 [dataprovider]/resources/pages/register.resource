@@ -21,6 +21,9 @@ I fill "${confirm_pass}" in confirm pass text field
 I select "${business_entity}" in business entity combo box
   Select From List By Label  ${BUSINESS_ENTITY_COMBOBOX}  ${business_entity}
 
+I accept the terms of use
+  Select Checkbox            ${TERMS_OF_USE_CHECKBOX}
+
 I should see the "${message}" message
   [Documentation]  Esta palavra-chave aguardará por que a  
               ...  mensagem esperada seja exibida na tela por  

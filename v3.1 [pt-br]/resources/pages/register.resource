@@ -5,9 +5,12 @@ Resource  ../page_objects/register_page_object.resource
 preencho o formulário com meus dados
   Input Text      ${NAME_TEXT_FIELD}           Lorem ipsum
   Input Text      ${MAIL_TEXT_FIELD}           lorem@ipsum.com
-  Input Password  ${PASS_TEXT_FIELD}           12345
-  Input Password  ${REGISTER_PASS_TEXT_FIELD}  12345
+  Input Password  ${PASS_TEXT_FIELD}           foo123
+  Input Password  ${REGISTER_PASS_TEXT_FIELD}  foo123
   Select From List By Label  ${BUSINESS_ENTITY_COMBOBOX}  Pessoa Física
+
+aceito os termos de uso
+  Select Checkbox            ${TERMS_OF_USE_CHECKBOX}
 
 submeto os dados do formulário
   Submit Form     ${REGISTER_BUTTON}
