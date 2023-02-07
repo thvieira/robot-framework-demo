@@ -18,19 +18,19 @@ Test Teardown   Close Browser
 Scenario: Success sign in as Natural Person
   [Tags]  go
     Given I generated a fake e-mail
-    #   And I am on Bookstore Demo web site
-    #   And I go to log in or sign in page
-    #  When I fill "Lorem ipsum" in name text field
-    #   And I fill "${fake_email}" in e-mail text field
-    #   And I fill "12345" in pass text field
-    #   And I fill "12345" in confirm pass text field
-    #   And I select "Pessoa Física" in business entity combo box
-    #   And I accept the terms of use
-    #   And I submit register form 
-    #  Then I should see the "Lorem ipsum, teu cadastro foi realizado com sucesso!" message
-    #   And I should see My Wish List
-    #   And I should see My Orders
-    #   And I should see the user "${fake_email}" active in to the database
+      And I am on Bookstore Demo web site
+      And I go to log in or sign in page
+     When I fill "Lorem ipsum" in name text field
+      And I fill "${fake_email}" in e-mail text field
+      And I fill "12345" in pass text field
+      And I fill "12345" in confirm pass text field
+      And I select "Pessoa Física" in business entity combo box
+      And I accept the terms of use
+      And I submit register form 
+     Then I should see the "Lorem ipsum, teu cadastro foi realizado com sucesso!" message
+      And I should see My Wish List
+      And I should see My Orders
+      And I should see the user "${fake_email}" active in to the database
       And I should delete the user "${fake_email}" from database
     
 Scenario: Success sign in as Juridicial Person
@@ -48,4 +48,5 @@ Scenario: Success sign in as Juridicial Person
       And I should see My Wish List
       And I should see My Orders
       And I should see the user "${fake_email}" active in to the database
+      And I should delete the user "${fake_email}" from database
 
