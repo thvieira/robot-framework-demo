@@ -30,3 +30,6 @@ I should see the "${message}" message
               ...  até 10 segundos. Caso contrário, o teste 
               ...  falhará por timeout.
   Wait Until Page Contains   text=${message}  timeout=10
+
+I should see the register form
+  Page Should Contain Element  ${REGISTRATION_FORM}

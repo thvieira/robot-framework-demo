@@ -30,5 +30,7 @@ Fill register form with data
     And I fill "${mail}" in e-mail text field
     And I fill "${pass}" in pass text field
     And I fill "${confirm_pass}" in confirm pass text field
+    And I accept the terms of use
     And I submit register form 
    Then I should see the "${expected_message}" message
+    And I should see the register form
