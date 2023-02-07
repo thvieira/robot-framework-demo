@@ -1,1 +1,0 @@
-SELECT email, is_active FROM users WHERE is_active = 1 AND email = '${user_email}';
