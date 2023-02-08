@@ -16,7 +16,6 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Success sign in as Natural Person
-  [Tags]  go
     Given I generated a fake e-mail
       And I am on Bookstore Demo web site
       And I go to log in or sign in page
