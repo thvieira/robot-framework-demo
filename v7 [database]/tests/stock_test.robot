@@ -10,7 +10,7 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Product out of stock
-  [Tags]  go
+  [Tags]  stock
   Given I have a product out of stock
     And I am on Bookstore Demo web site
    When I search for a book by ${isbn_of_book_out_of_estoque}
