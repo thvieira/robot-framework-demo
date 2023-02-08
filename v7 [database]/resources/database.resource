@@ -29,6 +29,7 @@ I am a blocked user
 I have a product out of stock
   Open database connection
   @{resultset} =  Query   SELECT isbn FROM books WHERE stock = 0;  
+  Should Not Be Empty  item=@{resultset}  msg=None valid product finded in database.
   ${book_item} =   Set Variable    @{resultset}[0]
   Set Global Variable  ${isbn_of_book_out_of_estoque}  ${book_item}
   [Teardown]      Close database connection

@@ -5,8 +5,8 @@ Resource        ../resources/database.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/product.resource
 
-Test Setup      Open Browser  ${URL}  ${BROWSER} 
-Test Teardown   Close Browser
+# Test Setup      Open Browser  ${URL}  ${BROWSER} 
+# Test Teardown   Close Browser
 
 *** Test Cases ***
 Scenario: Product out of stock
