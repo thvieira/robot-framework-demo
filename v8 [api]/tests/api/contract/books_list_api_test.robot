@@ -41,7 +41,7 @@ Scenario: Find book by non-existent ID
 
 *** Keywords ***
 I get books list
-  ${response} =  GET  ${BOOKSTORE_API}/books
+  ${response} =  GET  ${API_HOST}/books
   Set Global Variable  ${RESPONSE}  ${response}
 
 I should see a books list
@@ -53,4 +53,4 @@ I should see response status code ${expected_status}
   Status Should Be  ${expected_status}  ${RESPONSE}
 
 I should see an empty list
-    Should Be Empty  ${RESPONSE.json()}[books]
+  Should Be Empty  ${RESPONSE.json()}[books]
