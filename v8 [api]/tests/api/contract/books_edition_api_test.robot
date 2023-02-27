@@ -2,9 +2,7 @@
 Documentation  Bookstore Demo
           ...  Books Edition API Contract Testing
 Library        RequestsLibrary
-Default Tags   api  books  edition
-
-Suite Setup  Create Session  bookstore-demo  http://tst.bookstore-demo.com/
+Test Tags   api  books  edition
 
 *** Test Cases ***
 Scenario: Edit book

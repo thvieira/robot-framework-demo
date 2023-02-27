@@ -11,6 +11,6 @@ ${API_PASS}  admin123
 
 ${DB_NAME}      bookstoredb
 ${DB_USER}      root
-${DB_PASS}      admin123
+${DB_PASS}      Coragem@123
 ${DB_HOST}      localhost
 ${DB_PORT}      3306
