@@ -27,13 +27,16 @@ I am a blocked user
   Set Global Variable  ${blocked_user}   ${resultset}
   [Teardown]           Close database connection
 
-I have a product out of stock
+I get a product out of stock
   Open database connection
   @{resultset} =  Query   SELECT isbn FROM books WHERE stock = 0;  
   Should Not Be Empty  item=@{resultset}  msg=None valid product finded in database.
   ${book_item} =   Set Variable    @{resultset}[0]
   Set Global Variable  ${isbn_of_book_out_of_estoque}  ${book_item}
   [Teardown]      Close database connection
+
+I have an empty shopping cart
+  No Operation    
 
 I should see the inserted book in database
   [Arguments]  ${id}  ${isbn}
@@ -59,3 +62,25 @@ I insert book into database
   Execute SQL String  INSERT INTO books values ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', '${book.price}')
   [Teardown]           Close database connection
 
+I should see the ${field} of book ID ${id} with value ${expected_value} in database
+  Open database connection
+  Check If Not Exists In Database  SELECT id FROM books WHERE id = '${id}' and ${field} = ${expected_value};
+  [Teardown]                    Close database connection
+
+
+
+I get ${qtd} book${s} from database
+  @{inserted_id_list} =  Create List  
+  FOR  ${index}  IN RANGE  ${qtd}
+    &{fake_book} =  I get a fake book
+    I insert book into database  book=&{fake_book}
+    Append To List  ${inserted_id_list}  ${fake_book.id}
+  END
+  
+  Run Keyword If    ${qtd} == 1    Set Global Variable    ${BOOK_ID}  ${inserted_id_list}[0]
+       ...  ELSE  Set Global Variable  @{BOOKS_ID_LIST}   @{inserted_id_list}
+
+I should not see the book${s} from ${books_id} in the database 
+  FOR  ${book_id}  IN  @{books_id}
+    I should not see the removed book in the database   id=${book_id}
+  END

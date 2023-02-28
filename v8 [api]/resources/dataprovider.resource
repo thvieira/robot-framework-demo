@@ -2,11 +2,11 @@
 Library         FakerLibrary
 
 *** Keywords ***
-I generated a fake e-mail
+I get a fake e-mail
   ${fake_email} =  FakerLibrary.Email
   Set Global Variable   ${fake_email} 
 
-I generate an ISBN
+I get an fake ISBN
   ${fake_isbn} =       FakerLibrary.Isbn13
   Set Global Variable  ${FAKE_ISBN}   ${fake_isbn}
 
@@ -23,3 +23,4 @@ I get a fake book
                                 ...  publisher=${publisher}  price=${price}
   
   RETURN          &{fake_book}
+  

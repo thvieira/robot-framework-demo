@@ -30,15 +30,6 @@ I should see the inserted ID
   Set Global Variable  ${INSERTED_ID}  ${RESPONSE.json()}[id]
   Should Not Be Empty  ${INSERTED_ID}
 
-I have ${qtd} book${s} from database
-  @{inserted_id_list} =  Create List  
-  FOR  ${index}  IN RANGE  ${qtd}
-    &{fake_book} =  I get a fake book
-    I insert book into database  book=&{fake_book}
-    Append To List  ${inserted_id_list}  ${fake_book.id}
-  END
-  Set Global Variable  @{BOOKS_ID_LIST}   @{inserted_id_list}
-
 I delete book${s} in ${books_id}
   ${formated_param_list} =  Get From List  ${books_id}  0 
   Remove From List  ${books_id}   0
@@ -47,10 +38,16 @@ I delete book${s} in ${books_id}
     ${formated_param_list} =  Catenate  SEPARATOR=  ${formated_param_list}  ,  ${book_id}
   END
 
-  ${response} =  DELETE  ${API_HOST}/books  params=id=${formated_param_list}
+  &{header} =    Create Dictionary  x-session=${token}  Content-Type=application/json
+  ${response} =  DELETE  ${API_HOST}/books  params=id=${formated_param_list}  headers=&{header}
   Set Global Variable  ${RESPONSE}  ${response}
 
-I should not see the book${s} from ${books_id} in the database 
-  FOR  ${book_id}  IN  @{books_id}
-    I should not see the removed book in the database   id=${book_id}
-  END
+I change the ${field} of the book with ID ${id} to ${new_value}
+  &{payload} =   Create Dictionary    ${field}=${new_value}
+  &{header} =    Create Dictionary  x-session=${token}  Content-Type=application/json
+  ${response} =  PATCH  ${API_HOST}/books/${id}   headers=&{header}  json=&{payload}
+  Set Global Variable  ${RESPONSE}  ${response}
+
+I search for ${isbn_of_book_out_of_estoque}
+  ${response} =   GET  ${API_HOST}/books  params=search=${isbn_of_book_out_of_estoque}
+  Set Global Variable  ${RESPONSE}        ${response}
