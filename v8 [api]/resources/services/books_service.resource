@@ -48,6 +48,6 @@ I change the ${field} of the book with ID ${id} to ${new_value}
   ${response} =  PATCH  ${API_HOST}/books/${id}   headers=&{header}  json=&{payload}
   Set Global Variable  ${RESPONSE}  ${response}
 
-I search for ${isbn_of_book_out_of_estoque}
-  ${response} =   GET  ${API_HOST}/books  params=search=${isbn_of_book_out_of_estoque}
-  Set Global Variable  ${RESPONSE}        ${response}
+I search for ${something} in books
+  ${response} =   GET  ${API_HOST}/books  params=search=${something}
+  Set Global Variable  ${BOOK_ID}        ${response.json()}

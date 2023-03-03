@@ -25,16 +25,13 @@ Scenario: Create book
   
 Scenario: Create book with repeated ISBN
   [Tags]  B007
-#  Given I am authenticated
-#    And I 
-#   When I post a new book with the ISBN ${FAKE_ISBN}
-#   Then I should see response status code 409
+  No Operation  
 
 Scenario: Create book with invalid or omitted data
   [Tags]  B008
   No Operation  
 
-Scenario: Try to crate book not authenticated
+Scenario: Try to create book not authenticated
   [Tags]  B009
   No Operation  
 

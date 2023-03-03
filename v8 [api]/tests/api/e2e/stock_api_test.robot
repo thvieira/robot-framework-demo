@@ -12,7 +12,7 @@ Test Tags      api  e2e  stock
 Scenario: Product out of stock
   Given I get a product out of stock
     And I have an empty shopping cart
-   When I search for the product out of stock
-    And I add the product to the shopping cart
+   When I search for ${ISBN}
+    And I add the product ${BOOK_ID} to the shopping cart ${CART_ID}
    Then I should see the fail message "Product out of stock"
     And I should not see any product in my shopping cart
