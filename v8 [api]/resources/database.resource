@@ -59,7 +59,7 @@ I should not see the removed book in the database
 I insert book into database
   [Arguments]  ${book}
   Open database connection
-  Execute SQL String  INSERT INTO books values ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', '${book.price}')
+  Execute SQL String  INSERT INTO books values ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', '${book.price}', 1)
   [Teardown]           Close database connection
 
 I should see the ${field} of book ID ${id} with value ${expected_value} in database
@@ -77,7 +77,7 @@ I get ${qtd} book${s} from database
     Append To List  ${inserted_id_list}  ${fake_book.id}
   END
   
-  Run Keyword If    ${qtd} == 1    Set Global Variable    ${BOOK_ID}  ${inserted_id_list}[0]
+  Run Keyword IF    ${qtd} == 1    Set Global Variable    ${BOOK_ID}  ${inserted_id_list}[0]
        ...  ELSE  Set Global Variable  @{BOOKS_ID_LIST}   @{inserted_id_list}
 
 I should not see the book${s} from ${books_id} in the database 

@@ -4,7 +4,7 @@ Library         FakerLibrary
 *** Keywords ***
 I get a fake e-mail
   ${fake_email} =  FakerLibrary.Email
-  Set Global Variable   ${fake_email} 
+  Set Global Variable   ${FAKE_EMAIL}   ${fake_email} 
 
 I get an fake ISBN
   ${fake_isbn} =       FakerLibrary.Isbn13

@@ -14,9 +14,12 @@ Scenario: List all books
   Then I should see a books list
    And I should see response status code 200
 
-Scenario: List books with filter (ISBN, título ou autor)
+Scenario: List books with filter (ISBN, title or author)
   [Tags]   B002
-  No Operation  
+  Given I get 1 book from database
+   When I search for ${something} in books
+   Then I should see a books list
+    And I should see response status code 200
 
 Scenario: List books with filter no results
   [Tags]   B003

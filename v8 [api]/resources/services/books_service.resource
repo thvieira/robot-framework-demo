@@ -50,4 +50,4 @@ I change the ${field} of the book with ID ${id} to ${new_value}
 
 I search for ${something} in books
   ${response} =   GET  ${API_HOST}/books  params=search=${something}
-  Set Global Variable  ${BOOK_ID}        ${response.json()}
+  Set Global Variable  ${RESPONSE}        ${response.json()}
