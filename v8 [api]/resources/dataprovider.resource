@@ -22,5 +22,6 @@ I get a fake book
                                 ...  title=${title}  author=${author}  
                                 ...  publisher=${publisher}  price=${price}
   
-  RETURN          &{fake_book}
+  Set Global Variable  &{FAKE_BOOK}   &{fake_book}
+  RETURN               &{fake_book}
   

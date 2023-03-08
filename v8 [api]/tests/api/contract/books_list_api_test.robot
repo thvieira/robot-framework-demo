@@ -14,12 +14,25 @@ Scenario: List all books
   Then I should see a books list
    And I should see response status code 200
 
-Scenario: List books with filter (ISBN, title or author)
-  [Tags]   B002
-  Given I get 1 book from database
-   When I search for ${something} in books
-   Then I should see a books list
-    And I should see response status code 200
+Scenario: List books with filter by ISBN
+  [Tags]   B002  ISBN
+  Given I get a fake book
+    And I insert book into database  book=&{fake_book}
+   When I search for ${fake_book.isbn} in books
+   Then I should see response status code 200
+    And I should see the book ${fake_book.id} in ${RESPONSE.json()}
+    And I should see the ${RESPONSE.json()} with size 1
+  #[Teardown]  I should remove the book from database  id=${fake_book.id}
+
+Scenario: List books with filter by author
+  [Tags]   B002  author
+  Given I put some book by Erico Verissimo in database
+    And I put some book by Mario Benedetti in database
+   When I search for Erico Verissimo in books
+   Then I should see response status code 200
+    And I should see the book by Erico Verissimo in list
+    And I should not see the book by Mario Benedetti in list
+  [Teardown]  I clear data from database 
 
 Scenario: List books with filter no results
   [Tags]   B003

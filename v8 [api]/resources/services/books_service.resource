@@ -48,6 +48,32 @@ I change the ${field} of the book with ID ${id} to ${new_value}
   ${response} =  PATCH  ${API_HOST}/books/${id}   headers=&{header}  json=&{payload}
   Set Global Variable  ${RESPONSE}  ${response}
 
+
+
+I put some book by ${author} in database
+  Log  ${author}
+  &{fake_book} =  I get a fake book
+  ${fake_book.author} =  ${author}
+  I insert book into database  book=&{fake_book}
+
+
 I search for ${something} in books
   ${response} =   GET  ${API_HOST}/books  params=search=${something}
-  Set Global Variable  ${RESPONSE}        ${response.json()}
+  Set Global Variable  ${RESPONSE}        ${response}
+
+I should see the book ${book_id} in ${books_list}
+  Log  ${book_id}
+  Log Many  ${books_list}
+
+I should see the book by ${author} in list
+  Log  ${author}
+
+I should not see the book by ${author} in list
+  Log  ${author}
+
+I should see the ${list} with size ${expected_size}
+  Log Many  ${list}
+
+I clear data from database
+  [Arguments]  @{books}
+  Log Many     @{books}
