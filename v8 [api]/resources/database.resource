@@ -47,7 +47,7 @@ I should see the inserted book in database
 I should remove the book from database
   [Arguments]  ${id}
   Open database connection
-  Execute SQL String            DELETE FROM books WHERE id = ${id};
+  Execute SQL String            DELETE FROM books WHERE id = '${id}';
   [Teardown]                    Close database connection
 
 I should not see the removed book in the database 
@@ -56,10 +56,9 @@ I should not see the removed book in the database
   Check If Not Exists In Database  SELECT isbn FROM books WHERE id = '${id}';
   [Teardown]                    Close database connection
 
-I insert book into database
-  [Arguments]  ${book}
+I insert ${book} into database
   Open database connection
-  Execute SQL String  INSERT INTO books values ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', '${book.price}', 1)
+  Execute SQL String  INSERT INTO books values ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', ${book.price}, 1);
   [Teardown]                    Close database connection
 
 I should see the ${field} of book ID ${id} with value ${expected_value} in database
@@ -77,7 +76,7 @@ I get ${qtd} book${s} from database
   @{inserted_id_list} =  Create List  
   FOR  ${index}  IN RANGE  ${qtd}
     &{fake_book} =  I get a fake book
-    I insert book into database  book=&{fake_book}
+    I insert &{fake_book} into database
     Append To List  ${inserted_id_list}  ${fake_book.id}
   END
   

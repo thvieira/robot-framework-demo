@@ -2,9 +2,6 @@
 Documentation  Bookstore Demo
           ...  Books Creation API Contract Testing
 Library        RequestsLibrary
-Library        FakerLibrary
-Library        JSONLibrary
-Library        Collections
 Resource       ../../../resources/config.resource
 Resource       ../../../resources/database.resource
 Resource       ../../../resources/dataprovider.resource
@@ -16,12 +13,12 @@ Test Tags      api  books  creation
 Scenario: Create book
   [Tags]  B006
   Given I am authenticated
-    And I generate an ISBN
+    And I get an fake ISBN
    When I post a new book with the ISBN ${FAKE_ISBN}
    Then I should see response status code 201
-    And I should see the inserted ID 
-    And I should see the inserted book in database  id= ${INSERTED_ID}  isbn=${FAKE_ISBN}
-    And I should remove the book from database  id=${INSERTED_ID}
+    And I should see the inserted ID in response body
+    And I should see the inserted book in database  id=${INSERTED_ID}  isbn=${FAKE_ISBN}
+    And I should remove the book from database      id=${INSERTED_ID}
   
 Scenario: Create book with repeated ISBN
   [Tags]  B007

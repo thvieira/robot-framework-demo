@@ -1,5 +1,6 @@
 *** Settings ***
 Library  Collections
+Library  JSONLibrary
 Resource  ../database.resource
 Resource  ../dataprovider.resource
 
@@ -58,12 +59,13 @@ I put some book by ${author} in database
 
 
 I search for ${something} in books
-  ${response} =   GET  ${API_HOST}/books  params=search=${something}
-  Set Global Variable  ${RESPONSE}        ${response}
+  &{query_params} =    Create Dictionary       search=${something}
+  ${response} =        GET  ${API_HOST}/books  params=&{query_params}
+  Set Global Variable  ${RESPONSE}             ${response}
 
-I should see the book ${book_id} in ${books_list}
+I should see the book ${book_id} in books list response
   Log  ${book_id}
-  Log Many  ${books_list}
+  Log Many  ${RESPONSE.json()}
 
 I should see the book by ${author} in list
   Log  ${author}
@@ -71,9 +73,13 @@ I should see the book by ${author} in list
 I should not see the book by ${author} in list
   Log  ${author}
 
-I should see the ${list} with size ${expected_size}
-  Log Many  ${list}
+I should see ${expected_size} book${s} in books list response 
+  Log Many  ${RESPONSE.json()}
 
-I clear data from database
-  [Arguments]  @{books}
-  Log Many     @{books}
+I get the book ${bookId}  
+  ${response} =        GET  ${API_HOST}/books/${bookId}
+  Set Global Variable  ${RESPONSE}  ${response}
+
+I should see the book &{fake_book} informations
+  Log Many    &{fake_book}
+  Log Many    ${RESPONSE.json()}
