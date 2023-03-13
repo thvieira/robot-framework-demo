@@ -55,32 +55,22 @@ I should not see the book ${id} in the database
   Check If Not Exists In Database  SELECT isbn FROM books WHERE id = '${id}';
   [Teardown]                    Close database connection
 
-I insert ${book} into database
-  Open database connection
-  Execute SQL String  INSERT INTO books values ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', ${book.price}, 1);
-  [Teardown]                    Close database connection
-
 I should see the ${field} of book ID ${id} with value ${expected_value} in database
   Open database connection
   Check If Not Exists In Database  SELECT id FROM books WHERE id = '${id}' and ${field} = ${expected_value};
   [Teardown]                    Close database connection
 
+I insert ${book} into database
+  Open database connection
+  Execute SQL String            INSERT INTO books VALUES ('${book.id}', '${book.isbn}', '${book.title}', '${book.author}', '${book.publisher}', ${book.price}, 1);
+  [Teardown]                    Close database connection
+
+I insert all ${books_list} into database
+  FOR  ${book}  IN  @{books_list}
+    I insert ${book} into database
+  END
+
 I should not see the book${s} from ${books_id} in the database 
   FOR  ${book_id}  IN  @{books_id}
     I should not see the book ${book_id} in the database
   END
-
-
-
-
-
-I get ${qtd} book${s} from database
-  @{inserted_id_list} =  Create List  
-  FOR  ${index}  IN RANGE  ${qtd}
-    &{fake_book} =  I get a fake book
-    I insert &{fake_book} into database
-    Append To List  ${inserted_id_list}  ${fake_book.id}
-  END
-  
-  Run Keyword IF    ${qtd} == 1    Set Global Variable    ${BOOK_ID}  ${inserted_id_list}[0]
-       ...  ELSE  Set Global Variable  @{BOOKS_ID_LIST}   @{inserted_id_list}

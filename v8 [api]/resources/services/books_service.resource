@@ -25,7 +25,7 @@ I post a new book with the ISBN ${isbn}
   ${response} =       POST  ${API_HOST}/books  json=${body}  headers=&{header}
   Set Global Variable  ${RESPONSE}  ${response}
 
-I should see the inserted ID 
+I should see the inserted ID in response body
   Set Global Variable  ${INSERTED_ID}  ${RESPONSE.json()}[id]
   Should Not Be Empty  ${INSERTED_ID}
 

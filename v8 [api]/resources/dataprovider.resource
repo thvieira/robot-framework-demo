@@ -23,4 +23,12 @@ I get a fake book
                                 ...  publisher=${publisher}  price=${price}
   
   Set Global Variable  &{FAKE_BOOK}   &{fake_book}
-  
+  RETURN               &{fake_book}
+
+I get ${qtd} fake books
+  @{fake_book_list} =  Create List  
+  FOR  ${index}  IN RANGE  ${qtd}
+    &{fake_book} =  I get a fake book
+    Append To List  @{fake_book_list}   ${fake_book}
+  END
+  Set Global Variable  @{FAKE_BOOK_LIST}   @{fake_book_list}
