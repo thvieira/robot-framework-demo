@@ -23,5 +23,4 @@ I get a fake book
                                 ...  publisher=${publisher}  price=${price}
   
   Set Global Variable  &{FAKE_BOOK}   &{fake_book}
-  RETURN               &{fake_book}
   

@@ -27,12 +27,12 @@ I am a blocked user
   Set Global Variable  ${blocked_user}   ${resultset}
   [Teardown]           Close database connection
 
-I get a product out of stock
+I get an out of stock book
   Open database connection
   @{resultset} =  Query   SELECT isbn FROM books WHERE stock = 0;  
   Should Not Be Empty  item=@{resultset}  msg=None valid product found in database.
   ${book_item} =   Set Variable    @{resultset}[0]
-  Set Global Variable  ${ISBN}  ${book_item}
+  Set Global Variable  ${OUT_OF_STOCK_BOOK.isbn}  ${book_item}
   [Teardown]      Close database connection
 
 I have an empty shopping cart
@@ -50,8 +50,7 @@ I should remove the book from database
   Execute SQL String            DELETE FROM books WHERE id = '${id}';
   [Teardown]                    Close database connection
 
-I should not see the removed book in the database 
-  [Arguments]  ${id}
+I should not see the book ${id} in the database 
   Open database connection
   Check If Not Exists In Database  SELECT isbn FROM books WHERE id = '${id}';
   [Teardown]                    Close database connection
@@ -68,8 +67,11 @@ I should see the ${field} of book ID ${id} with value ${expected_value} in datab
 
 I should not see the book${s} from ${books_id} in the database 
   FOR  ${book_id}  IN  @{books_id}
-    I should not see the removed book in the database   id=${book_id}
+    I should not see the book ${book_id} in the database
   END
+
+
+
 
 
 I get ${qtd} book${s} from database
