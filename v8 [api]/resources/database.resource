@@ -28,12 +28,17 @@ I am a blocked user
   [Teardown]           Close database connection
 
 I get an out of stock book
-  Open database connection
-  @{resultset} =  Query   SELECT isbn FROM books WHERE stock = 0;  
-  Should Not Be Empty  item=@{resultset}  msg=None valid product found in database.
-  ${book_item} =   Set Variable    @{resultset}[0]
-  Set Global Variable  ${OUT_OF_STOCK_BOOK.isbn}  ${book_item}
-  [Teardown]      Close database connection
+  TRY
+    Open database connection
+    @{resultset} =  Query   SELECT isbn FROM books WHERE stock = 0;  
+    ${book_item} =   Set Variable    @{resultset}[0]
+    Set Global Variable  ${OUT_OF_STOCK_BOOK.isbn}  ${book_item}
+  EXCEPT
+    Log   None valid product found in database.  level=WARN
+    Skip  Insufficient data for testing.
+  FINALLY
+    Close database connection
+  END
 
 I have an empty shopping cart
   Set Global Variable    ${CART_ID}    XPTO
@@ -70,7 +75,7 @@ I insert all ${books_list} into database
     I insert ${book} into database
   END
 
-I should not see the book${s} from ${books_id} in the database 
-  FOR  ${book_id}  IN  @{books_id}
-    I should not see the book ${book_id} in the database
+I should not see the book${s} from ${books_list} in the database 
+  FOR  ${book}  IN  @{books_list}
+    I should not see the book ${book.id} in the database
   END

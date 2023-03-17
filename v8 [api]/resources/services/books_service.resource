@@ -29,11 +29,11 @@ I should see the inserted ID in response body
   Set Global Variable  ${INSERTED_ID}  ${RESPONSE.json()}[id]
   Should Not Be Empty  ${INSERTED_ID}
 
-I delete book${s} in ${books_id}
+I delete book${s} in ${books_list_or_book_id}
   IF  '${s}' == '${EMPTY}'
-    ${formated_param_list} =  Set Variable    ${books_id}
+    ${formated_param_list} =  Set Variable    ${books_list_or_book_id}
   ELSE
-    ${formated_param_list} =  Get comma separated list as string  list=${books_id}
+    ${formated_param_list} =  Get comma separated list as string  list=${books_list_or_book_id}
   END
 
   &{header} =          Create Dictionary  x-session=${TOKEN}  Content-Type=application/json

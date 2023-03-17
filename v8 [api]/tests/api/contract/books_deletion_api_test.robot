@@ -14,12 +14,12 @@ Scenario: Remove book
   [Tags]  B014
   Given I am authenticated
     And I get a fake book
-    And I insert &{fake_book} into database
-   When I delete book in ${fake_book.id}
+    And I insert &{FAKE_BOOK} into database
+   When I delete book in ${FAKE_BOOK.id}
    Then I should see response status code 204
-    And I should not see the book ${fake_book.id} in the database 
+    And I should not see the book ${FAKE_BOOK.id} in the database 
 
-Scenario: Remove books
+Scenario: Remove a books list
   [Tags]  B013
   Given I am authenticated
     And I get 3 fake books
