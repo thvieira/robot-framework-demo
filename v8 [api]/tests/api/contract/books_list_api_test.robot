@@ -6,7 +6,7 @@ Resource       ../../../resources/config.resource
 Resource       ../../../resources/database.resource
 Resource       ../../../resources/dataprovider.resource
 Resource       ../../../resources/services/books_service.resource
-Test Tags   api  books  list
+Test Tags      api  books  list
 
 *** Test Cases ***
 Scenario: List all books

@@ -14,3 +14,5 @@ ${DB_USER}      root
 ${DB_PASS}      Coragem@123
 ${DB_HOST}      localhost
 ${DB_PORT}      3306
+
+${KAFKA_SERVER} =   127.0.0.1:9092

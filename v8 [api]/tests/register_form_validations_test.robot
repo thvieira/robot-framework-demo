@@ -10,6 +10,7 @@ Resource        ../resources/pages/register.resource
 Test Setup      Open Browser   ${URL}  ${BROWSER}  
 Test Teardown   Close Browser  
 Test Template   Fill register form with data
+Test Tags       
 
 *** Test Cases ***                     NAME         E-MAIL         PASS    CONFIRM PASS  EXPECTED MESSAGE
 Invalid e-mail failure                 Lorem ipsum  lipsum         foo123  foo123        Fail: invalid e-mail.
@@ -22,7 +23,7 @@ Confirm password failure               Lorem ipsum  eu@lipsum.com  foo123  barr1
 *** Keywords ***
 Fill register form with data
   [Arguments]  ${name}  ${mail}  ${pass}  
-          ...  ${confirm_pass}  ${expected_message}  
+          ...  ${confirm_pass}  ${expected_message}  ${tag}
 
   Given I am on Bookstore Demo web site
     And I go to log in or sign in page

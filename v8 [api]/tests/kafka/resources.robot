@@ -61,3 +61,15 @@ Topic name with random sufix
     ${suffix}=	Generate Random String	4	[LOWER]
     ${topic_name_with_random}=	Format String	{}-{}	${topic_name}	${suffix}
     [Return]  ${topic_name_with_random}
+
+
+## Start the ZooKeeper service
+#$ bin/zookeeper-server-start.sh config/zookeeper.properties
+## Start the Kafka broker service
+#$ bin/kafka-server-start.sh config/server.properties
+## Create a topic
+#bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+## Producer
+#bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+## Consumer
+#bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092

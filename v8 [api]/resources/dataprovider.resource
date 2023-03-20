@@ -32,3 +32,19 @@ I get ${qtd} fake books
     Append To List  @{fake_book_list}   ${fake_book}
   END
   Set Global Variable  @{FAKE_BOOK_LIST}   @{fake_book_list}
+
+I get a random name
+  ${name} =            FakerLibrary.Name
+  Set Global Variable  ${RANDOM_NAME}  ${name}
+
+I get a random code
+  ${code} =            FakerLibrary.Uuid4
+  Set Global Variable  ${RANDOM_CODE}   ${code}
+
+I get a random id
+  ${id} =        FakerLibrary.RandomNumber  digits=4
+  Set Global Variable  ${RANDOM_ID}  ${id}
+
+I get a random datetime
+  ${datetime} =  FakerLibrary.Date
+  Set Global Variable  ${RANDOM_DATETIME}  ${datetime}
