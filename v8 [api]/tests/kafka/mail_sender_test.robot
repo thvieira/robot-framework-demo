@@ -6,12 +6,17 @@ Resource       ../../resources/email.resource
 Resource       ../../resources/kafka.resource
 Resource       ../../resources/dataprovider.resource
 Resource       ../../resources/services/auth_service.resource
+Resource       ../../resources/services/password_service.resource
 
 Test Tags       kafka
 Suite Teardown   Run Keyword And Ignore Error    Close
 
 *** Variable ***
-${TO} =  test_client@bookstoredemo.com
+${TO}            contato@editoracoragem.com.br
+
+${MAILBOX_HOST}  imap.gmail.com
+${MAILBOX_USER}  contato@editoracoragem.com.br
+${MAILBOX_PASS}  mascada123
 
 *** Test Cases ***
 Scenario: Post message into the queue
@@ -36,16 +41,18 @@ Scenario: Read from queue and send mail
     And I get a random code
     And I get a random id
     And I get a random datetime
-   When I conect to Kafka as Producer
-    And I send a message to mailQueue topic
-    And I open the mail box
-    And I wait for e-mail message
-    And I should see "Recuperar senha para ${RANDOM_NAME}" in e-mail body
+    And I get a dictionary with password recover data
+    And I conect to Kafka as Producer
+    And I send a message to mailQueue topic with content ${PASSWORD_RECOVER_DATA}
+   When I open the mail box        host=${MAILBOX_HOST}    user=${MAILBOX_USER}    pass=${MAILBOX_PASS}
+    And I wait for e-mail message  sender=${MAILBOX_USER}  subject=Recuperar senha para ${RANDOM_NAME}
+   Then I should see "Recuperar senha para ${RANDOM_NAME}" in e-mail body
     And I should see "Anote teu codigo <strong>${RANDOM_CODE}</strong>" in e-mail body
-    [Teardown]  Close Mailbox
+    [Teardown]  I close the mail box
 
-
-  &{msg} =             Create Dictionary  id=${RANDOM_ID}              category=${MESSAGE_TYPE}    
-                                     ...  name=${RANDOM_NAME}          recipientEmailAddress=${TO}  
-                                     ...  datetime=${RANDOM_DATETIME}  passwordRecoverCode=${RANDOM_CODE}
-
+*** Keywords ***
+I get a dictionary with password recover data
+  &{data} =  Create Dictionary  id=${RANDOM_ID}              category=passwordRecover
+                           ...  name=${RANDOM_NAME}          recipientEmailAddress=${TO}  
+                           ...  datetime=${RANDOM_DATETIME}  passwordRecoverCode=${RANDOM_CODE}
+  Set Global Variable           ${PASSWORD_RECOVER_DATA}     &{data}

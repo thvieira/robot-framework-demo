@@ -4,8 +4,8 @@ Library        KafkaLibrary
 Library        String
 
 *** Variable ***
-${ENCODING} =  UTF-8
-${GROUP_ID} =  Robot
+${ENCODING}  UTF-8
+${GROUP_ID}  Robot
 
 *** Keywords ***
 I conect to Kafka as Consumer
@@ -13,7 +13,7 @@ I conect to Kafka as Consumer
   Connect Consumer     bootstrap_servers=${KAFKA_SERVER}    client_id=RobotConsumer     group_id=${GROUP_ID}  enable_auto_commit=${TRUE}
 
 I conect to Kafka as Producer
-  Connect To Kafka     bootstrap_servers=${KAFKA_SERVER}    auto_offset_reset=latest    client_id=RobotConsumer     group_id=${GROUP_ID}
+  Connect To Kafka     bootstrap_servers=${KAFKA_SERVER}    auto_offset_reset=latest    client_id=RobotProducer     group_id=${GROUP_ID}
   Connect Producer     bootstrap_servers=${KAFKA_SERVER}    client_id=RobotProducer     group_id=${GROUP_ID}
 
 I subscribe ${topic} topic 
@@ -29,11 +29,10 @@ I should see the ${field_name} field
   Should Not Be Empty  ${KAFKA_LAST_MESSAGE}[id]
 
 I should see the ${field_name} field equals to ${expected_value}
-  Should Be Equal      ${message_as_json}[${field_name}]  ${expected_value}
+  Should Be Equal      ${KAFKA_LAST_MESSAGE}[${field_name}]  ${expected_value}
 
-I send a message to ${topic} topic 
-  [Arguments]             ${message_content}
+I send a message to ${topic} topic with content ${message_content}
   ${message_as_string} =  Convert Json To String    ${message_content}
-  ${bytes} =              Encode String To Bytes    ${message_text}    ${ENCODING}
+  ${bytes} =              Encode String To Bytes    ${message_as_string}    ${ENCODING}
   Send                    ${topic}            value=${bytes}
   Flush

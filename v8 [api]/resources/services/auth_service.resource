@@ -1,3 +1,6 @@
+*** Settings ***
+LIbrary  RequestsLibrary
+
 *** Keywords ***
 I am authenticated
   ${auth_payload} =   Create Dictionary  username=${API_USER}  password=${API_PASS}

@@ -1,13 +1,23 @@
 *** Settings ***
 Library        ImapLibrary2
 
-*** Test Cases ***
+*** Variables ***
+${POLL_FREQUENCY}  5
+${TIMEOUT}         30
+
+*** Keywords ***
 I open the mail box
-    Open Mailbox    host=imap.gmail.com     user=contato@editoracoragem.com.br    password=mascada123
+  [Arguments]   ${host}       ${user}       ${pass}
+  Open Mailbox  host=${host}  user=${user}  password=${pass}
 
 I wait for e-mail message
-    ${LATEST} =     Wait For Email          sender=contato@editoracoragem.com.br  subject=Recuperar senha para ${NAME}   poll_frequency=5  timeout=30
+  [Arguments]         ${sender}       ${subject}
+  ${latest} =    Wait For Email  sender=${sender}  subject=${subject}   poll_frequency=${POLL_FREQUENCY}  timeout=${TIMEOUT}
+  Set Global Variable  ${LATEST_MAIL}        ${latest}
 
 I should see "${expected_message}" in e-mail body
-    ${HTML} =       Get Email Body          ${LATEST}
-    Should Contain  ${HTML}    ${expected_message}
+  ${html} =       Get Email Body  ${LATEST_MAIL}
+  Should Contain  ${html}         ${expected_message}
+
+I close the mail box
+  Run Keyword And Ignore Error  Close Mailbox
