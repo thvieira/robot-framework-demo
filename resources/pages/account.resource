@@ -10,4 +10,4 @@ I should see My Invoices
   Page Should Contain Link   ${MY_INVOICES_LINK}
 
 I should see My Wish List
-  Page Should Contain Link   ${WISH_LIST_LINK}
+  Page Should Contain Link   ${MY_WISH_LIST_LINK}
