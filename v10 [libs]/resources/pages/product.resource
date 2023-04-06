@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation  Product Page Actions
-Resource       ../page_objects/product_page_object.resource
+Library     SeleniumLibrary
+Resource    ../page_objects/product_page_object.resource
 
 *** Keywords ***
 I should see the "${message}" message

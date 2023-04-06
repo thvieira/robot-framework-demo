@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Como cliente da loja virtual, devo ser induzido a
            ...  criar uma senha forte ao me cadastrar no sistema.
-Library         SeleniumLibrary
+
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource
@@ -10,7 +10,6 @@ Resource        ../resources/pages/register.resource
 Test Setup      Open Browser   ${URL}  ${BROWSER}  
 Test Teardown   Close Browser  
 Test Template   Fill register form with data
-Test Tags       
 
 *** Test Cases ***                     NAME         E-MAIL         PASS    CONFIRM PASS  EXPECTED MESSAGE
 Invalid e-mail failure                 Lorem ipsum  lipsum         foo123  foo123        Fail: invalid e-mail.

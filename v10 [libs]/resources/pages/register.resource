@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation  Register Page Actions
-Resource       ../page_objects/register_page_object.resource
+Library     SeleniumLibrary
+Resource    ../page_objects/register_page_object.resource
 
 *** Keywords ***
 I submit register form 

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation  My Account Page Actions
+Library        SeleniumLibrary
 Resource       ../page_objects/account_page_object.resource
 
 *** Keywords ***

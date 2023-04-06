@@ -1,6 +1,6 @@
 *** Settings ***
-Documentation  Home Actions
-Resource       ../page_objects/home_page.resource
+Library     SeleniumLibrary
+Resource    ../page_objects/home_page.resource
 
 *** Keywords ***
 I am on ${expected} web site
