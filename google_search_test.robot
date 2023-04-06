@@ -7,6 +7,6 @@ Test Teardown  Close Browser
 Cenário: Previsão do tempo em Porto Alegre
     Open browser  browser=firefox    
     Go To         url=http://www.google.com.br
-    Input Text    name="q"      Previsão do tempo em Porto Alegre
+    Input Text    name=q      Previsão do tempo em Porto Alegre
     Press Keys    name=q      RETURN
     Wait Until Page Contains  Previsão do tempo para os próximos 15 dias em Porto Alegre

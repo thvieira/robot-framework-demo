@@ -22,12 +22,12 @@ ${MY_INVOICES_LINK}          /my-invoices
 
 *** Test Cases ***
 Cenário: Cadastro com sucesso de Pessoa Física
-    Given Click Link     ${MY_ACCOUNT_BUTTON}
-    When Input Text      ${NAME_TEXT_FIELD}                  Lorem ipsum
-     And Input Text      ${MAIL_TEXT_FIELD}                  lorem@ipsum.com
-     And Input Password  ${PASS_TEXT_FIELD}                  12345
-     And Input Password  ${REGISTER_PASS_TEXT_FIELD}         12345
-     And Select From List By Label  ${USER_TYPE_TEXT_FIELD}  Pessoa Física
+    Given Click Link                ${MY_ACCOUNT_BUTTON}
+    When Input Text                 ${NAME_TEXT_FIELD}           Lorem ipsum
+     And Input Text                 ${MAIL_TEXT_FIELD}           lorem@ipsum.com
+     And Input Password             ${PASS_TEXT_FIELD}           12345
+     And Input Password             ${REGISTER_PASS_TEXT_FIELD}  12345
+     And Select From List By Label  ${USER_TYPE_TEXT_FIELD}      Pessoa Física
      And Select Checkbox            ${TERMS_OF_USE_CHECKBOX}
      And Submit Form                ${REGISTER_BUTTON}
     Then Wait Until Page Contains   Lorem ipsum, teu cadastro foi realizado com sucesso!
@@ -35,12 +35,12 @@ Cenário: Cadastro com sucesso de Pessoa Física
      And Page Should Contain Link   ${MY_ORDERS_LINK}
     
 Cenário: Cadastro com sucesso de Pessoa Jurídica
-    Given Click Link     ${MY_ACCOUNT_BUTTON} 
-    When Input Text      ${NAME_TEXT_FIELD}                  Lorem ipsum
-     And Input Text      ${MAIL_TEXT_FIELD}                  lorem@ipsum.com
-     And Input Password  ${REGISTER_PASS_TEXT_FIELD}         foo123
-     And Input Password  ${REGISTER_PASS_TEXT_FIELD}         foo123
-     And Select From List By Label  ${USER_TYPE_TEXT_FIELD}  Pessoa Jurídica
+    Given Click Link                ${MY_ACCOUNT_BUTTON} 
+    When Input Text                 ${NAME_TEXT_FIELD}           Lorem ipsum
+     And Input Text                 ${MAIL_TEXT_FIELD}           lorem@ipsum.com
+     And Input Password             ${REGISTER_PASS_TEXT_FIELD}  foo123
+     And Input Password             ${REGISTER_PASS_TEXT_FIELD}  foo123
+     And Select From List By Label  ${USER_TYPE_TEXT_FIELD}      Pessoa Jurídica
      And Select Checkbox            ${TERMS_OF_USE_CHECKBOX}
      And Submit Form                ${REGISTER_BUTTON}
     Then Wait Until Page Contains   Lorem ipsum, teu cadastro foi realizado com sucesso!

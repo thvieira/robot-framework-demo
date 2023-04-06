@@ -2,12 +2,24 @@
 
 Construção passo a passo de um projeto de apoio para ensino de automação com Robot Framework.
 
-v1 – Hello world
+## Pré-requisitos
 
-v2 – Page objects
+Para prosseguir no estudo deste projeto, tenha instalado o [Python](python.org), a biblioteca do [Robot Framework](robotframework.org) e a biblioteca do [Selenium](selenium.dev).
 
-v3 – Tasks
+## Execução
 
-v3.1 – PT-br language
+Para executar o teste de busca no Google, use:
 
-v4 – Test data
+```sh
+$ robot google_search_test.robot
+```
+
+Para executar o teste de cadastro na loja virtual da livraria Bookstore Demo, use:
+
+```sh
+$ robot register_test.robot
+```
+
+## Conteúdo
+
+Busque mais informações no livro *Automação com Robot Framework* da Casa do Código, disponível em [www.casadocodigo.com.br].
