@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Como cliente da loja virtual, devo ser induzido a
            ...  criar uma senha forte ao me cadastrar no sistema.
-Library         SeleniumLibrary
+
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource
@@ -22,7 +22,7 @@ Confirm password failure               Lorem ipsum  eu@lipsum.com  foo123  barr1
 *** Keywords ***
 Fill register form with data
   [Arguments]  ${name}  ${mail}  ${pass}  
-          ...  ${confirm_pass}  ${expected_message}  
+          ...  ${confirm_pass}   ${expected_message}  
 
   Given I am on Bookstore Demo web site
     And I go to log in or sign in page
