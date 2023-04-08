@@ -1,1 +1,0 @@
-SELECT email FROM users WHERE is_active = 1 AND email = '{}';
