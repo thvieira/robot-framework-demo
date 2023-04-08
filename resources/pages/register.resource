@@ -9,8 +9,8 @@ I submit register form
 I fill "${name}" in name text field
   Input Text                 ${NAME_TEXT_FIELD}           ${name}
 
-I fill "${mail}" in e-mail text field
-  Input Text                 ${MAIL_TEXT_FIELD}           ${mail}
+I fill the fake e-mail in e-mail text field
+  Input Text                 ${MAIL_TEXT_FIELD}           ${FAKE_EMAIL}
 
 I fill "${pass}" in pass text field
   Input Text                 ${PASS_TEXT_FIELD}           ${pass}
