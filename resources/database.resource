@@ -1,7 +1,10 @@
 *** Settings ***
 Documentation  Database conection and queries.
 Library        DatabaseLibrary
+<<<<<<< HEAD
 Library        FakerLibrary
+=======
+>>>>>>> v7/database
 Resource       config.resource
 
 *** Keywords ***
@@ -11,6 +14,7 @@ Open database connection
 Close database connection
   Disconnect from database
 
+<<<<<<< HEAD
 I should see the user "${user_email}" active in to the database
   Open database connection
   Check If Exists In Database   SELECT email FROM users WHERE is_active = 1 AND email = '${user_email}';
@@ -79,3 +83,28 @@ I should not see the book${s} from ${books_list} in the database
   FOR  ${book}  IN  @{books_list}
     I should not see the book ${book.id} in the database
   END
+=======
+I should see the inserted user active in to the database
+  Open database connection
+  Check If Exists In Database  SELECT email FROM users WHERE is_active = 1 AND email = '${FAKE_EMAIL}';
+  [Teardown]                   Close database connection
+
+I should delete the inserted user from database
+  Open database connection
+  Execute SQL String           DELETE FROM users WHERE email = '${FAKE_EMAIL}';
+  [Teardown]                   Close database connection
+
+I am a blocked user
+  Open database connection
+  ${resultset} =               Query                           SELECT email, senha FROM users WHERE is_active = 0;
+  Set Test Variable            ${BLOCKED_USER}                 ${resultset}
+  [Teardown]                   Close database connection
+
+I have a book out of stock
+  Open database connection
+  @{resultset} =               Query                           SELECT isbn FROM books WHERE stock = 0;  
+  Should Not Be Empty          item=@{resultset}               msg=None valid product finded in database.
+  ${book_item} =               Set Variable                    @{resultset}[0]
+  Set Test Variable            ${OUT_OF_STOCK_BOOK}            ${book_item}
+  [Teardown]                   Close database connection
+>>>>>>> v7/database

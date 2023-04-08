@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Como cliente da loja virtual, devo ser induzido a
            ...  criar uma senha forte ao me cadastrar no sistema.
-Library         SeleniumLibrary
+
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource

@@ -2,8 +2,7 @@
 Documentation   Como cliente da loja virtual, desejo criar um 
           ...   cadastro no sistema para poder visualizar meus 
           ...   pedidos e lista de desejos.
-Default Tags    register
-Library         SeleniumLibrary
+
 Resource        ../resources/config.resource
 Resource        ../resources/dataprovider.resource
 Resource        ../resources/database.resource
@@ -22,7 +21,7 @@ Scenario: Success sign in as Natural Person
     And I am on Bookstore Demo web site
     And I go to log in or sign in page
    When I fill "Lorem ipsum" in name text field
-    And I fill "${fake_email}" in e-mail text field
+    And I fill the fake e-mail in e-mail text field
     And I fill "12345" in pass text field
     And I fill "12345" in confirm pass text field
     And I select "Pessoa Física" in business entity combo box
@@ -40,7 +39,7 @@ Scenario: Success sign in as Juridicial Person
     And I am on Bookstore Demo web site
     And I go to log in or sign in page
    When I fill "Lorem ipsum LTDA" in name text field
-    And I fill "${fake_email}" in e-mail text field
+    And I fill the fake e-mail in e-mail text field
     And I fill "12345" in pass text field
     And I fill "12345" in confirm pass text field
     And I select "Pessoa Jurídica" in business entity combo box
@@ -49,6 +48,5 @@ Scenario: Success sign in as Juridicial Person
    Then I should see the "Lorem ipsum LTDA, teu cadastro foi realizado com sucesso!" message
     And I should see My Wish List
     And I should see My Orders
-    And I should see the user "${fake_email}" active in to the database
-    And I should delete the user "${fake_email}" from database
-
+    And I should see the inserted user active in to the database
+    And I should delete the inserted user from database
