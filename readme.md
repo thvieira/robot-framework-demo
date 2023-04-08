@@ -8,10 +8,10 @@ Para prosseguir no estudo deste projeto, tenha instalado o [Python](python.org),
 
 ## Execução
 
-Para executar toda bateria de testes, use:
+Para executar os testes de API, use:
 
 ```sh
-$ robot -d reports/ tests/
+$ robot -d reports/ tests/api/
 ```
 
 ## Conteúdo

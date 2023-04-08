@@ -2,7 +2,6 @@
 Documentation   Como cliente da loja virtual da livraria Bookstore Demo, 
           ...   desejo saber quando um produto está fora de estoque.
 
-
 Resource        ../resources/config.resource
 Resource        ../resources/database.resource
 Resource        ../resources/pages/home.resource

@@ -30,8 +30,8 @@ Scenario: Success sign in as Natural Person
    Then I should see the "Lorem ipsum, teu cadastro foi realizado com sucesso!" message
     And I should see My Wish List
     And I should see My Orders
-    And I should see the user "${fake_email}" active in to the database
-    And I should delete the user "${fake_email}" from database
+    And I should see the inserted user active in to the database
+    And I should delete the inserted user from database
     
 Scenario: Success sign in as Juridicial Person
   [Tags]  juridicial_person
