@@ -5,7 +5,7 @@ Documentation  Project global definitions.
 ${URL}           http://localhost:5173
 ${BROWSER}       firefox
 
-${API_HOST}      http://127.0.0.1:5000
+${API_HOST}      http://localhost:5000
 ${API_USER}      bookstore_admin
 ${API_PASS}      admin123
 

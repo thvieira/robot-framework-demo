@@ -2,8 +2,8 @@
 Library  Collections
 
 *** Keywords ***
-I add ${book} to the shopping cart
-  ${payload} =         Create Dictionary  item=${book.info.id}
+I add the out-of-stock book to the shopping cart
+  ${payload} =         Create Dictionary  item=${OUT_OF_STOCK_BOOK.id}
   ${response} =        POST  ${API_HOST}/cart/${CART_ID}  json=${payload}  expected_status=201
   Set Global Variable  ${RESPONSE}  ${response.json()}
 
