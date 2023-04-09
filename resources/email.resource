@@ -7,17 +7,16 @@ ${TIMEOUT}         30
 
 *** Keywords ***
 I open the mail box
-  [Arguments]   ${host}       ${user}       ${pass}
-  Open Mailbox  host=${host}  user=${user}  password=${pass}
+  Open Mailbox  host=${MAILBOX_HOST}  user=${MAILBOX_USER}  password=${MAILBOX_PASS}
 
 I wait for e-mail message
-  [Arguments]         ${sender}       ${subject}
-  ${latest} =    Wait For Email  sender=${sender}  subject=${subject}   poll_frequency=${POLL_FREQUENCY}  timeout=${TIMEOUT}
-  Set Global Variable  ${LATEST_MAIL}        ${latest}
+  ${subject} =   Set Variable    Recuperar senha para ${FAKE_NAME}
+  ${latest} =    Wait For Email  sender=${MAILBOX_USER}  subject=${subject}   poll_frequency=${POLL_FREQUENCY}  timeout=${TIMEOUT}
+  Set Test Variable  ${LATEST_MAIL}        ${latest}
 
-I should see "${expected_message}" in e-mail body
+I should see the fake code in e-mail body
   ${html} =       Get Email Body  ${LATEST_MAIL}
-  Should Contain  ${html}         ${expected_message}
+  Should Contain  ${html}         Anote teu codigo <strong>${FAKE_CODE}</strong>
 
 I close the mail box
   Run Keyword And Ignore Error  Close Mailbox

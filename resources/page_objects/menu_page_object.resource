@@ -1,2 +1,2 @@
 *** Variables ***
-${MY_ACCOUNT_BUTTON}         Minha conta
+${MY_ACCOUNT_BUTTON}  Minha conta

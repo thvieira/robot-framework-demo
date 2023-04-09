@@ -1,65 +1,83 @@
 *** Settings ***
+<<<<<<< HEAD
+=======
+Library  RequestsLibrary
+>>>>>>> v8/api
 Library  Collections
 Library  JSONLibrary
 
 *** Keywords ***
 I get books list
+<<<<<<< HEAD
   ${response} =  GET  ${API_HOST}/books
   Set Global Variable  ${RESPONSE}  ${response}
 
 I should see a books list
   Dictionary Should Contain Key   ${RESPONSE.json()}  books
   ${is_list} =  Evaluate     isinstance(${RESPONSE.json()}[books], list)
+=======
+  ${response} =      GET          ${API_HOST}/books
+  Set Test Variable  ${RESPONSE}  ${response}
+
+I should see a books list
+  Dictionary Should Contain Key  ${RESPONSE.json()}  books
+  ${is_list} =  Evaluate  isinstance(${RESPONSE.json()}[books], list)
+>>>>>>> v8/api
   Should Be True  ${is_list} 
 
 I should see response status code ${expected_status}
   Status Should Be  ${expected_status}  ${RESPONSE}
 
+I search for the fake book by ISBN
+  I search for ${FAKE_BOOK.isbn} in books
+
+I search for the out-of-stok book by ISBN
+  I search for ${OUT_OF_STOCK_BOOK.isbn} in books
+
+I search for ${something} in books
+  &{query_params} =  Create Dictionary       search=${something}
+  ${response} =      GET  ${API_HOST}/books  params=&{query_params}
+  Set Test Variable  ${RESPONSE}             ${response}
+
 I should see an empty book list
   Should Be Empty  ${RESPONSE.json()}[books]
 
-I post a new book with the ISBN ${isbn} 
-  ${body} =           Load Json From File  resources/requests/create_book.json
-  Set To Dictionary   ${body}  isbn=${isbn}
-  &{header} =         Create Dictionary  x-session=${TOKEN}  Content-Type=application/json
-  ${response} =       POST  ${API_HOST}/books  json=${body}  headers=&{header}
-  Set Global Variable  ${RESPONSE}  ${response}
+I post a new book with the fake ISBN 
+  ${body} =          Load Json From File  resources/payloads/create_book.json
+  Set To Dictionary  ${body}  isbn=${FAKE_ISBN}
+  &{header} =        Create Dictionary  x-session=${TOKEN}  Content-Type=application/json
+  ${response} =      POST  ${API_HOST}/books  json=${body}  headers=&{header}
+  Set Test Variable  ${RESPONSE}  ${response}
 
 I should see the inserted ID in response body
-  Set Global Variable  ${INSERTED_ID}  ${RESPONSE.json()}[id]
+  Set Test Variable    ${INSERTED_ID}  ${RESPONSE.json()}[id]
   Should Not Be Empty  ${INSERTED_ID}
 
-I delete book${s} in ${books_list_or_book_id}
+I delete the fake book${s}
   IF  '${s}' == '${EMPTY}'
-    ${formated_param_list} =  Set Variable    ${books_list_or_book_id}
+    ${formated_param_list} =  Set Variable    ${FAKE_BOOK.id}
   ELSE
-    ${formated_param_list} =  Get comma separated list as string  list=${books_list_or_book_id}
+    ${formated_param_list} =  Get comma separated list as string  list=@{FAKE_BOOK_LIST}
   END
 
-  &{header} =          Create Dictionary  x-session=${TOKEN}  Content-Type=application/json
-  &{query_params} =    Create Dictionary  id=${formated_param_list}
-  ${response} =        DELETE  ${API_HOST}/books  params=&{query_params}  headers=&{header}
-  Set Global Variable  ${RESPONSE}  ${response}
+  &{header} =        Create Dictionary  x-session=${TOKEN}  Content-Type=application/json
+  &{query_params} =  Create Dictionary  id=${formated_param_list}
+  ${response} =      DELETE  ${API_HOST}/books  params=&{query_params}  headers=&{header}
+  Set Test Variable  ${RESPONSE}  ${response}
 
-I change the ${field} of the book with ID ${id} to ${new_value}
+I change the ${field} of the fake book to ${new_value}
   &{payload} =   Create Dictionary  ${field}=${new_value}
   &{header} =    Create Dictionary  x-session=${TOKEN}  Content-Type=application/json
-  ${response} =  PATCH  ${API_HOST}/books/${id}   headers=&{header}  json=&{payload}
-  Set Global Variable  ${RESPONSE}  ${response}
+  ${response} =  PATCH  ${API_HOST}/books/${FAKE_BOOK.id}   headers=&{header}  json=&{payload}
+  Set Test Variable  ${RESPONSE}  ${response}
 
 I put some book by ${author} in database
-  Log  ${author}
   &{fake_book} =  I get a fake book
   ${fake_book.author} =  ${author}
   I insert book into database  book=&{fake_book}
 
-I search for ${something} in books
-  &{query_params} =    Create Dictionary       search=${something}
-  ${response} =        GET  ${API_HOST}/books  params=&{query_params}
-  Set Global Variable  ${RESPONSE}             ${response}
-
-I should see the book ${book_id} in books list response
-  Log  ${book_id}
+I should see the fake in books list response
+  Log  ${FAKE_BOOK.id}
   Log Many  ${RESPONSE.json()}
 
 I should see the book by ${author} in list
@@ -71,17 +89,21 @@ I should not see the book by ${author} in list
 I should see ${expected_size} book${s} in books list response 
   Log Many  ${RESPONSE.json()}
 
-I get the book ${book_id}  
-  ${response} =        GET  ${API_HOST}/books/${book_id}
-  Set Global Variable  ${RESPONSE}  ${response}
+I get the fake book by ID
+  ${response} =      GET  ${API_HOST}/books/${FAKE_BOOK.id}
+  Set Test Variable  ${RESPONSE}  ${response}
 
-I should see the book &{fake_book} informations
-  Log Many    &{fake_book}
+I get the out-of-stok book
+  ${response} =      GET  ${API_HOST}/books/${OUT_OF_STOCK_BOOK.id}
+  Set Test Variable  ${RESPONSE}  ${response}
+
+I should see the fake book informations
+  Log Many    &{FAKE_BOOK}
   Log Many    ${RESPONSE.json()}
 
 I choose the first book of search list
   ${first} =  Create Dictionary    info=${RESPONSE.json()}[books][0]
-  Set Global Variable    ${BOOK}   ${first}
+  Set Test Variable    ${BOOK}   ${first}
 
 
 ## MOVER PARA UTILS RESOURCE
