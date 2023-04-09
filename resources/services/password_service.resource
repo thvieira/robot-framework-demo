@@ -8,12 +8,11 @@ ${MESSAGE_TYPE}   passwordRecover
 
 *** Keywords ***
 I ask for password reset
-  [Arguments]     ${name}  ${to}  ${code}
-  &{header} =    Create Dictionary  x-session=${TOKEN}  Content-Type=application/json
-  &{payload} =    Create Dictionary  name=${name}                 recipientEmailAddress=${to}      
-                                ...  category=${MESSAGE_TYPE}     passwordRecoverCode=${code}     
+  &{header} =    Create Dictionary  x-session=${TOKEN}            Content-Type=application/json
+  &{payload} =    Create Dictionary  name=${FAKE_NAME}            recipientEmailAddress=${TO}      
+                                ...  category=${MESSAGE_TYPE}     passwordRecoverCode=${FAKE_CODE}     
   ${response} =   POST               ${API_HOST}/reset-password   json=&{payload}  headers=&{header}  expected_status=202
-  Set Global Variable  ${RESPONSE}  ${response} 
+  Set Test Variable  ${RESPONSE}  ${response} 
 
 I should see response status code ${expected_status}
   Status Should Be  ${expected_status}  ${RESPONSE}

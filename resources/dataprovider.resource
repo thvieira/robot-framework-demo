@@ -33,18 +33,18 @@ I get ${qtd} fake books
   END
   Set Test Variable  @{FAKE_BOOK_LIST}   @{fake_book_list}
 
-I get a random name
+I get a fake name
   ${name} =          FakerLibrary.Name
-  Set Test Variable  ${RANDOM_NAME}      ${name}
+  Set Test Variable  ${FAKE_NAME}      ${name}
 
-I get a random code
+I get a fake code
   ${code} =          FakerLibrary.Uuid4
-  Set Test Variable  ${RANDOM_CODE}      ${code}
+  Set Test Variable  ${FAKE_CODE}      ${code}
 
-I get a random id
+I get a fake id
   ${id} =            FakerLibrary.RandomNumber  digits=4
-  Set Test Variable  ${RANDOM_ID}        ${id}
+  Set Test Variable  ${FAKE_ID}        ${id}
 
-I get a random datetime
+I get a fake datetime
   ${datetime} =      FakerLibrary.Date
-  Set Test Variable  ${RANDOM_DATETIME}  ${datetime}
+  Set Test Variable  ${FAKE_DATETIME}  ${datetime}
