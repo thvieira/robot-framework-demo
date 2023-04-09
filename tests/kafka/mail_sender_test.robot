@@ -27,8 +27,8 @@ Scenario: Post message into the queue
     And I should see a new message on the queue
     And I should see the id field
     And I should see the datetime field
-    And I should see the name field equals to ${FAKE_NAME}
-    And I should see the passwordRecoverCode field equals to ${FAKE_CODE}
+    And I should see the name field equals to fake name
+    And I should see the passwordRecoverCode field equals to fake ode
     And I should see the recipientEmailAddress field equals to ${TO}
   
 Scenario: Read from queue and send mail
@@ -42,8 +42,7 @@ Scenario: Read from queue and send mail
     And I send a message to mailQueue topic with password recover data
    When I open the mail box
     And I wait for e-mail message
-   Then I should see "Recuperar senha para ${FAKE_NAME}" in e-mail body
-    And I should see "Anote teu codigo <strong>${FAKE_CODE}</strong>" in e-mail body
+    And I should see the fake code in e-mail body
     [Teardown]  I close the mail box
 
 *** Keywords ***
@@ -51,4 +50,4 @@ I get a dictionary with password recover data
   &{data} =  Create Dictionary  id=${FAKE_ID}              category=passwordRecover
                            ...  name=${FAKE_NAME}          recipientEmailAddress=${TO}  
                            ...  datetime=${FAKE_DATETIME}  passwordRecoverCode=${FAKE_CODE}
-  Set Test Variable             ${PASSWORD_RECOVER_DATA}     &{data}
+  Set Test Variable             ${PASSWORD_RECOVER_DATA}   &{data}

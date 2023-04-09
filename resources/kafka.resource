@@ -20,7 +20,7 @@ I subscribe ${topic} topic
   Subscribe Topic   ${topic}
 
 I should see a new message on the queue
-  ${messages} =            Poll  max_records=${10}  timeout_ms=${1000}
+  ${messages} =            Poll  max_records=${1}  timeout_ms=${1000}
   ${message_as_string} =   Decode Bytes To String  ${messages[0].value}  ${ENCODING}
   ${message_as_json} =     Convert String To Json  ${message_as_string}
   Set Test Variable        ${KAFKA_LAST_MESSAGE}   ${message_as_json}
@@ -28,8 +28,14 @@ I should see a new message on the queue
 I should see the ${field_name} field
   Should Not Be Empty  ${KAFKA_LAST_MESSAGE}[id]
 
-I should see the ${field_name} field equals to ${expected_value}
-  Should Be Equal      ${KAFKA_LAST_MESSAGE}[${field_name}]  ${expected_value}
+I should see the ${field_name} field equals to fake name
+  Should Be Equal      ${KAFKA_LAST_MESSAGE}[${field_name}]  ${FAKE_NAME}
+
+I should see the ${field_name} field equals to fake code
+  Should Be Equal      ${KAFKA_LAST_MESSAGE}[${field_name}]  ${FAKE_ODE}
+
+I should see the ${field_name} field equals to recipient e-mail
+  Should Be Equal      ${KAFKA_LAST_MESSAGE}[${field_name}]  ${TO}
 
 I send a message to ${topic} topic with password recover data
   ${message_as_string} =  Convert Json To String    ${PASSWORD_RECOVER_DATA}
