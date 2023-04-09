@@ -22,7 +22,7 @@ Scenario: Remove a books list
   [Tags]  B013
   Given I am authenticated
     And I get 3 fake books
-    And I insert all @{FAKE_BOOK_LIST} into database
+    And I insert all fake books into database
    When I delete the fake books
    Then I should see response status code 204
-    And I should not see the books from @{FAKE_BOOK_LIST} in the database 
+    And I should not see the fake book list in the database 

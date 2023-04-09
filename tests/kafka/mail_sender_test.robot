@@ -29,7 +29,7 @@ Scenario: Post message into the queue
     And I should see the datetime field
     And I should see the name field equals to fake name
     And I should see the passwordRecoverCode field equals to fake ode
-    And I should see the recipientEmailAddress field equals to ${TO}
+    And I should see the recipientEmailAddress field equals to recipient e-mail
   
 Scenario: Read from queue and send mail
   [Tags]  read

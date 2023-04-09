@@ -81,12 +81,12 @@ I insert ${book} into database
                  ...            sansTran=True
   [Teardown]                    Close database connection
 
-I insert all ${books_list} into database
-  FOR  ${book}  IN  @{books_list}
+I insert all fake books into database
+  FOR  ${book}  IN  @{FAKE_BOOK_LIST}
     I insert ${book} into database
   END
 
-I should not see the book${s} from ${books_list} in the database 
-  FOR  ${book}  IN  @{books_list}
+I should not see the fake book list in the database 
+  FOR  ${book}  IN  @{FAKE_BOOK_LIST}
     I should not see the book ${book.id} in the database
   END

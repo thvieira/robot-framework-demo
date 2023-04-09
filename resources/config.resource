@@ -18,5 +18,5 @@ ${DB_PORT}       3306
 ${KAFKA_SERVER}  127.0.0.1:9092
 
 ${MAILBOX_HOST}  imap.gmail.com
-${MAILBOX_USER}  contato@editoracoragem.com.br
-${MAILBOX_PASS}  mascada123
+${MAILBOX_USER}  test_client_bookstore_demo@gmail.com
+${MAILBOX_PASS}  SenhaDaCaixaDeEmails
