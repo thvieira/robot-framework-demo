@@ -1,10 +1,6 @@
 *** Settings ***
 Documentation  Database conection and queries.
 Library        DatabaseLibrary
-<<<<<<< HEAD
-Library        FakerLibrary
-=======
->>>>>>> v8/api
 Resource       config.resource
 
 *** Keywords ***

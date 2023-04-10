@@ -1,29 +1,19 @@
 *** Settings ***
-<<<<<<< HEAD
-=======
 Library  RequestsLibrary
->>>>>>> v8/api
 Library  Collections
 Library  JSONLibrary
+Library  ../libraries/MyLibrary.py 
 
 *** Keywords ***
 I get books list
-<<<<<<< HEAD
-  ${response} =  GET  ${API_HOST}/books
-  Set Global Variable  ${RESPONSE}  ${response}
-
-I should see a books list
-  Dictionary Should Contain Key   ${RESPONSE.json()}  books
-  ${is_list} =  Evaluate     isinstance(${RESPONSE.json()}[books], list)
-=======
   ${response} =      GET          ${API_HOST}/books
   Set Test Variable  ${RESPONSE}  ${response}
 
 I should see a books list
   Dictionary Should Contain Key  ${RESPONSE.json()}  books
-  ${is_list} =  Evaluate  isinstance(${RESPONSE.json()}[books], list)
->>>>>>> v8/api
-  Should Be True  ${is_list} 
+  Should Be List                 objet=@{RESPONSE.json()}[books]
+  #${is_list} =  Evaluate  isinstance(${RESPONSE.json()}[books], list)
+  #Should Be True  ${is_list} 
 
 I should see response status code ${expected_status}
   Status Should Be  ${expected_status}  ${RESPONSE}
@@ -107,11 +97,11 @@ I choose the first book of search list
 
 
 ## MOVER PARA UTILS RESOURCE
-Get comma separated list as string
-  [Arguments]  @{list}
-  ${comma_separated_list} =  Get From List  ${list}  0 
-  Remove From List           ${list}        0
-  FOR  ${item}  IN  @{list}
-    ${comma_separated_list} =  Catenate  SEPARATOR=  ${comma_separated_list}  ,  ${item}
-  END
-  RETURN  ${comma_separated_list}
+# Get comma separated list as string
+#   [Arguments]  @{list}
+#   ${comma_separated_list} =  Get From List  ${list}  0 
+#   Remove From List           ${list}        0
+#   FOR  ${item}  IN  @{list}
+#     ${comma_separated_list} =  Catenate  SEPARATOR=  ${comma_separated_list}  ,  ${item}
+#   END
+#   RETURN  ${comma_separated_list}
