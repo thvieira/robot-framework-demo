@@ -1,5 +1,5 @@
 *** Settings ***
-Library         SeleniumLibrary
+
 Resource        ../resources/config.resource
 Resource        ../resources/pages/home.resource
 Resource        ../resources/pages/menu.resource

@@ -10,6 +10,10 @@ I search for a book by ${search_text}
   Input Text  ${BOOKS_SEARCH_BAR}  ${search_text} 
   Press Keys  ${BOOKS_SEARCH_BAR}  RETURN
 
-I search for this book by ISBN
+I search for this out-of-stock book by ISBN
   Input Text  ${BOOKS_SEARCH_BAR}  ${OUT_OF_STOCK_BOOK}
+  Press Keys  ${BOOKS_SEARCH_BAR}  RETURN
+
+I search for this book by ISBN
+  Input Text  ${BOOKS_SEARCH_BAR}  ${BOOK.isbn}
   Press Keys  ${BOOKS_SEARCH_BAR}  RETURN
