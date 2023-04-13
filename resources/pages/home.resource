@@ -17,3 +17,9 @@ I search for this out-of-stock book by ISBN
 I search for this book by ISBN
   Input Text  ${BOOKS_SEARCH_BAR}  ${BOOK.isbn}
   Press Keys  ${BOOKS_SEARCH_BAR}  RETURN
+
+I visit the book
+  I search for this book by ISBN
+  Wait Until Page Contains          ${BOOK.title}
+  Push item to Stack                ${BOOK}
+  

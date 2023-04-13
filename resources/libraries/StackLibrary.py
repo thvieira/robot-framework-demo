@@ -24,7 +24,7 @@ class StackLibrary:
         """
         self.data.append(item)
         self.pointer += 1
-        logger.info("Added " + item + " to the top of the stack.")
+        logger.info("Added " + str(item) + " to the top of the stack.")
 
     @keyword('Pop item from Stack')
     def pop(self):
@@ -34,7 +34,7 @@ class StackLibrary:
         self.should_be_not_empty()
         item = self.data.pop(self.pointer - 1)
         self.pointer -= 1
-        logger.info("Item " + item + " was removed.")
+        logger.info("Item " + str(item) + " was removed.")
         return item
 
     @keyword('Clear stack')

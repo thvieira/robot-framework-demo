@@ -29,9 +29,9 @@ I am a blocked user
 I get a${nother} book from database
   TRY
     Open database connection
-    @{resultset} =     Query                 SELECT id, isbn, title FROM books WHERE stock > 0 LIMIT 1;   returnAsDict=True
-    &{book_item} =     Set Variable          ${resultset}[0]
-    Set Test Variable  ${BOOK}  ${book_item}
+    @{resultset} =     Query         SELECT id, isbn, title FROM books WHERE stock > 0 LIMIT 1;   returnAsDict=True
+    &{book_item} =     Set Variable  ${resultset}[0]
+    Set Test Variable  ${BOOK}       ${book_item}
   EXCEPT
     Log   None valid product found in database.  level=WARN
     Skip  Insufficient data for testing.
