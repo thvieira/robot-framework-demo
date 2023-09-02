@@ -16,4 +16,4 @@ $ robot -d reports/ tests/api/
 
 ## Conteúdo
 
-Busque mais informações no livro *Automação com Robot Framework* da Casa do Código, disponível em [https://www.casadocodigo.com.br/products/livro-robot-framework](www.casadocodigo.com.br/livro-robot-framework).
+Busque mais informações no livro *Automação com Robot Framework* da Casa do Código, disponível em (www.casadocodigo.com.br/livro-robot-framework)[https://www.casadocodigo.com.br/products/livro-robot-framework].
